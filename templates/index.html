@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Store</title>
+</head>
+<body>
+    <h1>Welcome to our simple store!</h1>
+    
+    <h3>Products</h3>
+    <ul>
+        {% for product in products %}
+            <li>
+                {{ product['name'] }} - ${{ product['price'] }}
+                <form action="/add_to_cart" method="post">
+                    <input type="hidden" name="product_id" value="{{ product['id'] }}">
+                    <input type="submit" value="Add to cart">
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h3>Cart</h3>
+    <ul>
+        {% for item in cart %}
+            <li>Product ID: {{ item }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
